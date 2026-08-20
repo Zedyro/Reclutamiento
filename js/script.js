@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 2. INICIALIZACIÓN DE EMAILJS (Servicio de envío de correos)
-(function() {
+(function () {
     if (typeof emailjs !== "undefined") {
-        emailjs.init("FUOcs1atpHjE9rvx0"); 
+        emailjs.init("FUOcs1atpHjE9rvx0");
     }
 })();
 
@@ -68,8 +68,9 @@ function procesarRegistro(event) {
             .then(() => {
                 finalizarRegistroExitoso(nombre, email, servicio);
             })
-            .catch(() => {
-                finalizarRegistroExitoso(nombre, email, servicio);
+            .catch((error) => {
+                console.error("Error de EmailJS:", error); // Esto sí mostrará el problema en la consola
+                mostrarMensaje("Error al enviar el correo. Revisa la consola.", "error");
             });
     } else {
         setTimeout(() => {
