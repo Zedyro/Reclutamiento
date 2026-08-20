@@ -72,10 +72,6 @@ function procesarRegistro(event) {
                 console.error("Error de EmailJS:", error); // Esto sí mostrará el problema en la consola
                 mostrarMensaje("Error al enviar el correo. Revisa la consola.", "error");
             });
-    } else {
-        setTimeout(() => {
-            finalizarRegistroExitoso(nombre, email, servicio);
-        }, 800);
     }
 }
 
