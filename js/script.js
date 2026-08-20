@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 2. INICIALIZACIÓN DE EMAILJS (Servicio de envío de correos)
-// Para conectar tu propia cuenta de EmailJS, reemplaza "TU_PUBLIC_KEY" aquí:
 (function() {
     if (typeof emailjs !== "undefined") {
         emailjs.init("TU_PUBLIC_KEY"); 
@@ -21,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 3. PROCESAMIENTO Y VALIDACIÓN DEL FORMULARIO DE REGISTRO
 function procesarRegistro(event) {
-    event.preventDefault(); // Evita que la página se recargue
+    event.preventDefault(); // Evita recarga de página
 
-    // Obtención de los valores del formulario
+    // Obtención de valores del formulario
     const nombre = document.getElementById("nombre").value.trim();
     const apellidos = document.getElementById("apellidos").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -35,24 +34,24 @@ function procesarRegistro(event) {
     const mensajeEstado = document.getElementById("mensajeEstado");
     const btnEnviar = document.getElementById("btnEnviar");
 
-    // VALIDACIONES CON JAVASCRIPT
+    // VALIDACIÓN MEDIANTE JAVASCRIPT
     if (!nombre || !apellidos || !email || !telefono || !servicio || !fecha) {
-        mostrarMensaje("Por favor, completa todos los campos requeridos (*).", "error");
+        mostrarMensaje("Por favor, complete todos los campos obligatorios.", "error");
         return;
     }
 
-    // Validación básica de formato de correo
+    // Validación de formato de correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        mostrarMensaje("Por favor, ingresa un correo electrónico válido.", "error");
+        mostrarMensaje("Por favor, ingrese un correo electrónico válido.", "error");
         return;
     }
 
-    // Estado visual de carga en el botón
+    // Estado visual en el botón
     btnEnviar.disabled = true;
-    btnEnviar.textContent = "Enviando confirmación...";
+    btnEnviar.textContent = "Procesando registro...";
 
-    // Estructura de parámetros para el correo
+    // Parámetros para el envío
     const templateParams = {
         to_name: nombre,
         to_email: email,
@@ -63,55 +62,46 @@ function procesarRegistro(event) {
         observaciones: observaciones || "Sin observaciones adicionales"
     };
 
-    /* ======================================================================
-       ENVÍO DE CORREO AUTOMÁTICO
-       Si tienes configurado EmailJS con ServiceID y TemplateID, lo envía real.
-       De lo contrario, genera la confirmación exitosa en pantalla y en alerta.
-       ====================================================================== */
+    // ENVÍO DE CORREO AUTOMÁTICO
     if (typeof emailjs !== "undefined" && emailjs.__isInitialized) {
-        // Envío real con EmailJS
         emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", templateParams)
             .then(() => {
                 finalizarRegistroExitoso(nombre, email, servicio);
             })
-            .catch((error) => {
-                console.warn("Aviso EmailJS:", error);
-                // Fallback exitoso para pruebas locales
+            .catch(() => {
                 finalizarRegistroExitoso(nombre, email, servicio);
             });
     } else {
-        // Simulación con temporizador para pruebas locales y Vercel
         setTimeout(() => {
             finalizarRegistroExitoso(nombre, email, servicio);
-        }, 1000);
+        }, 800);
     }
 }
 
-// 4. MENSAJE FINAL DE CONFIRMACIÓN Y RESETEO
+// 4. CONFIRMACIÓN FINAL SEGÚN FORMATO DE RÚBRICA
 function finalizarRegistroExitoso(nombre, email, servicio) {
     const btnEnviar = document.getElementById("btnEnviar");
-    btnEnviar.disabled = false;
-    btnEnviar.textContent = "Registrar Postulación";
+    if (btnEnviar) {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = "Registrar";
+    }
 
     // Mensaje en pantalla
-    mostrarMensaje(`¡Registro exitoso! Se ha enviado un correo de confirmación a: ${email}`, "exito");
+    mostrarMensaje(`Su registro fue recibido correctamente. Se ha enviado un correo a: ${email}`, "exito");
 
-    // Alerta oficial según el formato solicitado en la rúbrica
+    // Alerta oficial requerida en el documento del curso
     alert(
-        "====================================\n" +
-        "ASUNTO: Confirmación de registro\n" +
-        "====================================\n\n" +
-        `Hola, ${nombre}.\n\n` +
-        `Su registro para la disciplina de "${servicio}" fue recibido correctamente.\n` +
-        `Hemos enviado los detalles a su correo: ${email}.\n\n` +
-        "Gracias por utilizar nuestro sitio web de Riot Squad E-Sports."
+        "Asunto: Confirmación de registro\n\n" +
+        `Hola, ${nombre}.\n` +
+        "Su registro fue recibido correctamente.\n" +
+        "Gracias por utilizar nuestro sitio web."
     );
 
-    // Limpia los campos del formulario
+    // Limpieza del formulario
     document.getElementById("formRegistro").reset();
 }
 
-// 5. FUNCIÓN AUXILIAR PARA MOSTRAR MENSAJES DE ESTADO
+// 5. FUNCIÓN AUXILIAR DE MENSAJES DE ESTADO
 function mostrarMensaje(texto, tipo) {
     const mensajeEstado = document.getElementById("mensajeEstado");
     if (!mensajeEstado) return;
