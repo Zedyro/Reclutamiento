@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro - Riot Squad E-Sports</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- EmailJS SDK para el envío de correo electrónico automático -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+    <!-- NAVEGACIÓN -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                ⚡ RIOT SQUAD
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Nosotros</a></li>
+                <li><a href="services.html">Disciplinas</a></li>
+                <li><a href="news.html">Noticias</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="registro.html" class="btn-nav">¡Registro!</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="section">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Formulario de Registro</h2>
+            <p class="subtitulo-seccion">
+                Completa tus datos para registrar tu postulación a los rosters competitivos de Riot Squad.
+            </p>
+
+            <div class="contacto-container">
+                <!-- Columna Izquierda: Información de la Convocatoria -->
+                <div class="contacto-info">
+                    <h3>¡Únete a nuestra escuadra!</h3>
+                    <p>
+                        Al completar el formulario, el sistema procesará tus datos y te enviará automáticamente un <strong>correo electrónico de confirmación</strong> a la dirección que ingreses.
+                    </p>
+
+                    <div class="contacto-dato">
+                        <strong>📩 Confirmación inmediata:</strong>
+                        <span>Revisa tu bandeja de entrada o spam tras enviar el formulario.</span>
+                    </div>
+
+                    <div class="contacto-dato">
+                        <strong>🎮 Discord Oficial:</strong>
+                        <span>Las pruebas se coordinarán por medio de nuestro canal de voz.</span>
+                    </div>
+
+                    <div class="contacto-dato">
+                        <strong>⏱️ Tiempo de respuesta:</strong>
+                        <span>Evaluaremos tu postulación en un plazo máximo de 48 horas.</span>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario con los campos solicitados -->
+                <form id="formRegistro" onsubmit="procesarRegistro(event)">
+                    <h3 style="margin-bottom: 20px; color: #0f172a;">Datos del Aspirante</h3>
+
+                    <!-- Mensaje dinámico de estado (éxito / error) -->
+                    <div id="mensajeEstado" style="display: none; padding: 14px; border-radius: 6px; margin-bottom: 20px; font-weight: bold; text-align: center;"></div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span style="color: #ef4444;">*</span></label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos <span style="color: #ef4444;">*</span></label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Ingresa tus apellidos" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico <span style="color: #ef4444;">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono <span style="color: #ef4444;">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+506 8888-8888" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio">Tipo de actividad o disciplina <span style="color: #ef4444;">*</span></label>
+                        <select id="servicio" name="servicio" class="form-select" required>
+                            <option value="" disabled selected>Seleccione una disciplina</option>
+                            <option value="Valorant">Valorant (Roster Competitivo)</option>
+                            <option value="League of Legends">League of Legends (Roster Master+)</option>
+                            <option value="Staff / Analista">Staff / Analista de Estrategia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha de disponibilidad para pruebas <span style="color: #ef4444;">*</span></label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones / Rango actual y experiencia</label>
+                        <textarea id="observaciones" name="observaciones" rows="4" placeholder="Indica tu rango actual (Elo), campeones/agentes principales o experiencia en torneos previos..."></textarea>
+                    </div>
+
+                    <button type="submit" id="btnEnviar" class="btn" style="width: 100%;">
+                        Registrar Postulación
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; <span id="anio"></span> Riot Squad E-Sports. Todos los derechos reservados.</p>
+            <p>Reclutamiento Oficial</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

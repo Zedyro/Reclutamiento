@@ -1,4 +1,4 @@
-/* ==============================
+﻿/* ==============================
    ESTILOS GENERALES
 ================================ */
 * {
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial, Helvetica;
     background-color: #f8fafc;
     color: #334155;
     line-height: 1.6;
@@ -56,7 +56,7 @@ header {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .menu a {
@@ -75,6 +75,7 @@ header {
     padding: 8px 16px;
     border-radius: 6px;
     color: white !important;
+    font-weight: bold;
 }
 
 .btn-nav:hover {
@@ -155,12 +156,13 @@ header {
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
 }
 
 .btn:hover {
     background-color: #1d4ed8;
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
 }
 
 .btn-secundario {
@@ -257,13 +259,13 @@ header {
 }
 
 /* ==============================
-   CARDS DE JUEGOS
+   TARJETAS Y CARDS (JUEGOS Y NOTICIAS)
 ================================ */
 .proyectos-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* <- Ahora son 2 columnas */
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    max-width: 800px; 
+    max-width: 850px;
     margin: 0 auto;
 }
 
@@ -387,7 +389,8 @@ header {
 }
 
 .form-group input,
-.form-select {
+.form-select,
+.form-group textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #cbd5e1;
@@ -395,12 +398,18 @@ header {
     font-size: 15px;
     outline: none;
     font-family: inherit;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form-group input:focus,
-.form-select:focus {
+.form-select:focus,
+.form-group textarea:focus {
     border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
 }
 
 /* ==============================
@@ -437,6 +446,11 @@ footer {
         flex-direction: column;
         gap: 15px;
         padding: 15px 0;
+    }
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
     }
     .hero h1 {
         font-size: 32px;
