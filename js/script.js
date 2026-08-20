@@ -3,70 +3,19 @@
 // ==============================
 
 const anio = document.getElementById("anio");
-
 anio.textContent = new Date().getFullYear();
 
+// 2. Procesar el envío del formulario de registro
+function enviarFormulario(event) {
+    event.preventDefault(); // Evita que la página se recargue
 
-// ==============================
-// BOTONES DE PROYECTOS
-// ==============================
+    const nombre = document.getElementById("nombre").value;
+    const gamertag = document.getElementById("gamertag").value;
+    const juego = document.getElementById("juego").value;
 
-function verProyecto(nombreProyecto) {
+    // Alerta de confirmación (Paso 3 de las instrucciones)
+    alert(`¡Gracias ${nombre} (${gamertag})!\n\nTu postulación para el equipo de ${juego} fue recibida correctamente. Te enviaremos un correo de confirmación con los detalles de las pruebas.`);
 
-    alert(
-        "Ha seleccionado el proyecto: " +
-        nombreProyecto
-    );
-
+    // Limpia el formulario
+    document.getElementById("formRegistro").reset();
 }
-
-
-// ==============================
-// FORMULARIO DE CONTACTO
-// ==============================
-
-const formulario = document.getElementById("formContacto");
-
-
-formulario.addEventListener(
-    "submit",
-    function(event) {
-
-        event.preventDefault();
-
-
-        const nombre =
-            document.getElementById("nombre").value;
-
-        const correo =
-            document.getElementById("correo").value;
-
-        const mensaje =
-            document.getElementById("mensaje").value;
-
-
-        if (
-            nombre.trim() === "" ||
-            correo.trim() === "" ||
-            mensaje.trim() === ""
-        ) {
-
-            alert(
-                "Por favor complete todos los campos."
-            );
-
-            return;
-        }
-
-
-        alert(
-            "Gracias " +
-            nombre +
-            ". Su mensaje fue recibido correctamente."
-        );
-
-
-        formulario.reset();
-
-    }
-);

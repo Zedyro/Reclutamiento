@@ -1,11 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riot Squad</title>
+    <title>Riot Squad E-Sports - Reclutamiento</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                RIOT SQUAD
+            </div>
+            <ul class="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#juegos">Disciplinas</a></li>
+                <li><a href="registro.html" class="btn-nav">¡Reclutamiento!</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <p class="saludo">TEMPORADA COMPETITIVA 2026</p>
+                    <h1>¿TIENES LO NECESARIO PARA COMPETIR?</h1>
+                    <h2>Buscamos nuevos talentos para nuestros rosters oficiales</h2>
+                    <p class="descripcion-hero">
+                        Riot Squad abre sus puertas para jugadores apasionados que busquen competir en torneos.
+                    </p>
+                    <div class="hero-botones">
+                        <!-- Dejamos únicamente este botón -->
+                        <a href="#juegos" class="btn">
+                            Ver Disciplinas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE EL EQUIPO -->
+        <section id="nosotros" class="section">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Sobre Riot Squad</h2>
+                <p class="subtitulo-seccion">
+                    Somos una organización de deportes electrónicos enfocada en el desarrollo de talento y disciplina
+                    competitiva.
+                </p>
+
+                <div class="sobre-mi-container">
+                    <div class="sobre-mi-texto">
+                        <h3>Nuestra Filosofía</h3>
+                        <p>
+                            Creemos en el trabajo en equipo, la comunicación constante y el entrenamiento estructurado.
+                            No solo buscamos habilidad individual, sino compromiso y ganas de mejorar.
+                        </p>
+                        <p>
+                            Ofrecemos sesiones de entrenamiento semanales, análisis de partidas y participación en
+                            torneos reconocidos.
+                        </p>
+                    </div>
+
+                    <div class="datos-personales">
+                        <div class="dato">
+                            <strong>Modalidad:</strong>
+                            <span>Online y Torneos Presenciales</span>
+                        </div>
+                        <div class="dato">
+                            <strong>Requisito principal:</strong>
+                            <span>Compromiso y actitud positiva</span>
+                        </div>
+                        <div class="dato">
+                            <strong>Horarios de Scrims:</strong>
+                            <span>Noches y Fines de Semana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISCIPLINAS / JUEGOS (Solo Valorant y LoL) -->
+        <section id="juegos" class="section section-gray">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Rosters Disponibles</h2>
+                <p class="subtitulo-seccion">
+                    Elige tu juego principal y demuestra tu nivel en las pruebas de selección.
+                </p>
+
+                <div class="proyectos-container">
+                    <!-- Juego 1 -->
+                    <article class="proyecto">
+                        <div class="proyecto-contenido">
+                            <span class="proyecto-categoria">FPS Táctico</span>
+                            <h3>Valorant</h3>
+                            <p>Buscamos Duelistas y Controladores con rango Platino o superior para el roster principal.
+                            </p>
+                            <div class="proyecto-tecnologias">
+                                <span>5v5</span>
+                                <span>PC</span>
+                                <span>Micrófono requerido</span>
+                            </div>
+                            <a href="registro.html" class="btn">Postular a Valorant</a>
+                        </div>
+                    </article>
+
+                    <!-- Juego 2 -->
+                    <article class="proyecto">
+                        <div class="proyecto-contenido">
+                            <span class="proyecto-categoria">MOBA</span>
+                            <h3>League of Legends</h3>
+                            <p>Convocatoria abierta para nuevo roster en rangos Maestro, Gran Maestro y Challenger con
+                                disponibilidad para torneos de fin de semana.</p>
+                            <div class="proyecto-tecnologias">
+                                <span>5v5</span>
+                                <span>PC</span>
+                                <span>Estrategia</span>
+                            </div>
+                            <a href="registro.html" class="btn">Postular a LoL</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; <span id="anio"></span> Riot Squad E-Sports.</p>
+            <p>Reclutamiento</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
-</html>
+
+</html>>
