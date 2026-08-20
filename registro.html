@@ -1,91 +1,72 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Riot Squad E-Sports</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- EmailJS SDK para envío de correo electrónico -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
-
 <body>
-    <!-- NAVEGACIÓN -->
     <header>
         <nav class="navbar">
-            <div class="logo">
-                Riot Squad E-Sports
-            </div>
+            <div class="logo">Riot Squad E-Sports</div>
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html">Nosotros</a></li>
-                <li><a href="services.html">Disciplinas</a></li>
-                <li><a href="news.html">Noticias</a></li>
-                <li><a href="contact.html">Contacto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="servicios.html">Disciplinas</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
                 <li><a href="registro.html" class="btn-nav">Registro</a></li>
             </ul>
         </nav>
     </header>
-
     <main class="section">
         <div class="contenedor">
             <h2 class="titulo-seccion">Formulario de Registro</h2>
             <p class="subtitulo-seccion">
                 Complete el siguiente formulario para postularse al proceso de reclutamiento de Riot Squad.
             </p>
-
             <div class="contacto-container">
-                <!-- Columna Izquierda: Información -->
                 <div class="contacto-info">
                     <h3>Proceso de Inscripción</h3>
                     <p>
                         Una vez completada la información requerida, el sistema enviará automáticamente un correo electrónico de confirmación a la dirección suministrada.
                     </p>
-
                     <div class="contacto-dato">
                         <strong>Correo de Contacto:</strong>
                         <span>contacto@riotsquad.com</span>
                     </div>
-
                     <div class="contacto-dato">
                         <strong>Atención WhatsApp:</strong>
-                        <span>+506 8566-6738</span>
+                        <span>+506 8392-4789</span>
+                        <br>
+                        <span>+506 8633-5697</span>
                     </div>
-
                     <div class="contacto-dato">
                         <strong>Tiempo de Respuesta:</strong>
-                        <span>Revisión de solicitudes en un plazo máximo de 48 horas.</span>
+                        <span>Revisión de solicitudes en un plazo máximo de 24 horas.</span>
                     </div>
                 </div>
-
-                <!-- Columna Derecha: Formulario -->
                 <form id="formRegistro" onsubmit="procesarRegistro(event)">
                     <h3 style="margin-bottom: 20px; color: #0f172a;">Datos del Postulante</h3>
-
-                    <!-- Mensaje dinámico de confirmación / error -->
                     <div id="mensajeEstado" style="display: none; padding: 14px; border-radius: 6px; margin-bottom: 20px; font-weight: bold; text-align: center;"></div>
-
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
                     </div>
-
                     <div class="form-group">
                         <label for="apellidos">Apellidos</label>
                         <input type="text" id="apellidos" name="apellidos" placeholder="Ingrese sus apellidos" required>
                     </div>
-
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
                         <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
                     </div>
-
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
                         <input type="tel" id="telefono" name="telefono" placeholder="+506 8888-8888" required>
                     </div>
-
                     <div class="form-group">
                         <label for="servicio">Tipo de servicio o actividad</label>
                         <select id="servicio" name="servicio" class="form-select" required>
@@ -95,17 +76,14 @@
                             <option value="Staff y Analisis">Staff y Análisis Estratégico</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="fecha">Fecha de disponibilidad</label>
                         <input type="date" id="fecha" name="fecha" required>
                     </div>
-
                     <div class="form-group">
                         <label for="observaciones">Observaciones</label>
                         <textarea id="observaciones" name="observaciones" rows="4" placeholder="Indique rango actual, experiencia en torneos u observaciones relevantes..."></textarea>
                     </div>
-
                     <button type="submit" id="btnEnviar" class="btn" style="width: 100%;">
                         Registrar
                     </button>
@@ -113,16 +91,11 @@
             </div>
         </div>
     </main>
-
-    <!-- FOOTER -->
     <footer>
         <div class="footer-container">
-            <p>&copy; <span id="anio"></span> Riot Squad E-Sports. Todos los derechos reservados.</p>
-            <p>Sistema de Reclutamiento</p>
+            <p>&copy; <span id="anio"></span> Riot Squad E-Sports.</p>
         </div>
     </footer>
-
     <script src="js/script.js"></script>
 </body>
-
 </html>
