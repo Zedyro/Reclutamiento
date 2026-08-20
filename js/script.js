@@ -31,7 +31,6 @@ function procesarRegistro(event) {
     const fecha = document.getElementById("fecha").value;
     const observaciones = document.getElementById("observaciones").value.trim();
 
-    const mensajeEstado = document.getElementById("mensajeEstado");
     const btnEnviar = document.getElementById("btnEnviar");
 
     // VALIDACIÓN MEDIANTE JAVASCRIPT
@@ -62,17 +61,19 @@ function procesarRegistro(event) {
         observaciones: observaciones || "Sin observaciones adicionales"
     };
 
-    // ENVÍO DE CORREO AUTOMÁTICO
-    if (typeof emailjs !== "undefined" && emailjs.__isInitialized) {
-        emailjs.send("service_ildyxbf", "template_u2n11es", templateParams)
-            .then(() => {
-                finalizarRegistroExitoso(nombre, email, servicio);
-            })
-            .catch((error) => {
-                console.error("Error de EmailJS:", error); // Esto sí mostrará el problema en la consola
-                mostrarMensaje("Error al enviar el correo. Revisa la consola.", "error");
-            });
-    }
+    // ENVÍO DE CORREO AUTOMÁTICO - DIRECTO SIN CONDICIONALES
+    emailjs.send("service_ildyxbf", "template_u2n11es", templateParams)
+        .then((response) => {
+            console.log("ÉXITO!", response.status, response.text);
+            finalizarRegistroExitoso(nombre, email, servicio);
+        })
+        .catch((error) => {
+            console.error("Error de EmailJS:", error);
+            mostrarMensaje("Error al conectar con el servidor de correos.", "error");
+            // Reactivamos el botón
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = "Registrar";
+        });
 }
 
 // 4. CONFIRMACIÓN FINAL SEGÚN FORMATO DE RÚBRICA
