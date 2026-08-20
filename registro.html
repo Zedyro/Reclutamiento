@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -31,7 +33,8 @@
                 <div class="contacto-info">
                     <h3>Proceso de Inscripción</h3>
                     <p>
-                        Una vez completada la información requerida, el sistema enviará automáticamente un correo electrónico de confirmación a la dirección suministrada.
+                        Una vez completada la información requerida, el sistema enviará automáticamente un correo
+                        electrónico de confirmación a la dirección suministrada.
                     </p>
                     <div class="contacto-dato">
                         <strong>Correo de Contacto:</strong>
@@ -50,7 +53,9 @@
                 </div>
                 <form id="formRegistro" onsubmit="procesarRegistro(event)">
                     <h3 style="margin-bottom: 20px; color: #0f172a;">Datos del Postulante</h3>
-                    <div id="mensajeEstado" style="display: none; padding: 14px; border-radius: 6px; margin-bottom: 20px; font-weight: bold; text-align: center;"></div>
+                    <div id="mensajeEstado"
+                        style="display: none; padding: 14px; border-radius: 6px; margin-bottom: 20px; font-weight: bold; text-align: center;">
+                    </div>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
@@ -82,7 +87,8 @@
                     </div>
                     <div class="form-group">
                         <label for="observaciones">Observaciones</label>
-                        <textarea id="observaciones" name="observaciones" rows="4" placeholder="Indique rango actual, experiencia en torneos u observaciones relevantes..."></textarea>
+                        <textarea id="observaciones" name="observaciones" rows="4"
+                            placeholder="Indique rango actual, experiencia en torneos u observaciones relevantes..."></textarea>
                     </div>
                     <button type="submit" id="btnEnviar" class="btn" style="width: 100%;">
                         Registrar

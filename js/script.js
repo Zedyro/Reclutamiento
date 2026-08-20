@@ -1,28 +1,19 @@
-﻿/* ==========================================================================
-   RIOT SQUAD E-SPORTS - JAVASCRIPT PRINCIPAL
-   IF0009 - Desarrollo de Software IV
-   ========================================================================== */
-
-// 1. AÑO DINÁMICO EN EL FOOTER
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
     const anio = document.getElementById("anio");
     if (anio) {
         anio.textContent = new Date().getFullYear();
     }
 });
 
-// 2. INICIALIZACIÓN DE EMAILJS (Servicio de envío de correos)
 (function () {
     if (typeof emailjs !== "undefined") {
         emailjs.init("FUOcs1atpHjE9rvx0");
     }
 })();
 
-// 3. PROCESAMIENTO Y VALIDACIÓN DEL FORMULARIO DE REGISTRO
-function procesarRegistro(event) {
-    event.preventDefault(); // Evita recarga de página
 
-    // Obtención de valores del formulario
+function procesarRegistro(event) {
+    event.preventDefault();
     const nombre = document.getElementById("nombre").value.trim();
     const apellidos = document.getElementById("apellidos").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -32,25 +23,17 @@ function procesarRegistro(event) {
     const observaciones = document.getElementById("observaciones").value.trim();
 
     const btnEnviar = document.getElementById("btnEnviar");
-
-    // VALIDACIÓN MEDIANTE JAVASCRIPT
     if (!nombre || !apellidos || !email || !telefono || !servicio || !fecha) {
         mostrarMensaje("Por favor, complete todos los campos obligatorios.", "error");
         return;
     }
-
-    // Validación de formato de correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         mostrarMensaje("Por favor, ingrese un correo electrónico válido.", "error");
         return;
     }
-
-    // Estado visual en el botón
     btnEnviar.disabled = true;
     btnEnviar.textContent = "Procesando registro...";
-
-    // Parámetros para el envío
     const templateParams = {
         to_name: nombre,
         to_email: email,
@@ -60,8 +43,6 @@ function procesarRegistro(event) {
         fecha: fecha,
         observaciones: observaciones || "Sin observaciones adicionales"
     };
-
-    // ENVÍO DE CORREO AUTOMÁTICO - DIRECTO SIN CONDICIONALES
     emailjs.send("service_ildyxbf", "template_u2n11es", templateParams)
         .then((response) => {
             console.log("ÉXITO!", response.status, response.text);
@@ -70,13 +51,10 @@ function procesarRegistro(event) {
         .catch((error) => {
             console.error("Error de EmailJS:", error);
             mostrarMensaje("Error al conectar con el servidor de correos.", "error");
-            // Reactivamos el botón
             btnEnviar.disabled = false;
             btnEnviar.textContent = "Registrar";
         });
 }
-
-// 4. CONFIRMACIÓN FINAL SEGÚN FORMATO DE RÚBRICA
 function finalizarRegistroExitoso(nombre, email, servicio) {
     const btnEnviar = document.getElementById("btnEnviar");
     if (btnEnviar) {
@@ -84,29 +62,21 @@ function finalizarRegistroExitoso(nombre, email, servicio) {
         btnEnviar.textContent = "Registrar";
     }
 
-    // Mensaje en pantalla
     mostrarMensaje(`Su registro fue recibido correctamente. Se ha enviado un correo a: ${email}`, "exito");
-
-    // Alerta oficial requerida en el documento del curso
     alert(
         "Asunto: Confirmación de registro\n\n" +
         `Hola, ${nombre}.\n` +
         "Su registro fue recibido correctamente.\n" +
         "Gracias por utilizar nuestro sitio web."
     );
-
-    // Limpieza del formulario
     document.getElementById("formRegistro").reset();
 }
 
-// 5. FUNCIÓN AUXILIAR DE MENSAJES DE ESTADO
 function mostrarMensaje(texto, tipo) {
     const mensajeEstado = document.getElementById("mensajeEstado");
     if (!mensajeEstado) return;
-
     mensajeEstado.style.display = "block";
     mensajeEstado.textContent = texto;
-
     if (tipo === "error") {
         mensajeEstado.style.backgroundColor = "#fee2e2";
         mensajeEstado.style.color = "#991b1b";
