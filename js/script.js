@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // 2. INICIALIZACIÓN DE EMAILJS (Servicio de envío de correos)
 (function() {
     if (typeof emailjs !== "undefined") {
-        emailjs.init("TU_PUBLIC_KEY"); 
+        emailjs.init("FUOcs1atpHjE9rvx0"); 
     }
 })();
 
@@ -64,7 +64,7 @@ function procesarRegistro(event) {
 
     // ENVÍO DE CORREO AUTOMÁTICO
     if (typeof emailjs !== "undefined" && emailjs.__isInitialized) {
-        emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", templateParams)
+        emailjs.send("service_ildyxbf", "template_u2n11es", templateParams)
             .then(() => {
                 finalizarRegistroExitoso(nombre, email, servicio);
             })
